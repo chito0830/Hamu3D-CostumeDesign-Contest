@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after{
+box-sizing:border-box;
+}
+
 body{
 font-family:sans-serif;
 font-size: 20px;
@@ -7,7 +13,9 @@ background-color:#fff9c4;
 }
 
 .container{
-width:1100px;
+max-width:1100px;
+width:100%;
+padding:0 16px;
 margin:0 auto;
 }
 
@@ -23,14 +31,28 @@ height:70px;
 padding:2px 12px;
 }
 
-nav a{
-margin-left:20px;
+header nav{
+margin-left:auto;
+padding-right:8px;
+}
+
+header nav a{
+display:inline-block;
+padding:8px 12px;
 text-decoration:none;
 color:#49413d;
+font-weight:500;
+transition:color 0.2s ease;
+}
+
+header nav a:hover{
+color:#f17f32;
 }
 
 .main-img{
     width: 100%;
+    height:auto;
+    display:block;
 }
 
 .hero{
@@ -40,6 +62,7 @@ padding:0 0 10px 0;
 .hero-inner{
 display:flex;
 align-items:center;
+gap:24px;
 }
 
 .hero-text{
@@ -75,29 +98,131 @@ border-radius:6px;
 }
 
 .section{
-padding:80px 0;
+padding:20px 0;
+}
+
+.section .container > *{
+margin-bottom:1em;
+}
+
+.section .container > *:last-child{
+margin-bottom:0;
+}
+
+.section .container p{
+line-height:1.8;
+margin-top:0;
 }
 
 h3{
 font-size:32px;
 color:#5a453d;
-margin-bottom:20px;
+margin-top:0;
+margin-bottom:1em;
 border-bottom:2px solid #5a453d;
 padding-bottom:6px;
 }
 
 .timeline{
-line-height:2;
+line-height:1.8;
 }
 
 .steps{
-line-height:2;
+line-height:1.8;
 }
 
 footer{
 background:white;
-padding:40px 0;
+padding:20px 0;
 text-align:center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px){
+  body{
+    font-size:18px;
+  }
+
+  /* PC以外はContact Usを非表示 */
+  header nav{
+    display:none;
+  }
+
+  /* ヘッダーロゴを少し縮小 */
+  .header-inner img{
+    max-height:48px;
+    width:auto;
+  }
+
+  .section{
+    padding:18px 0;
+  }
+
+  .subtitle{
+    font-size:32px;
+  }
+
+  h3{
+    font-size:28px;
+  }
+
+  .header-inner{
+    height:auto;
+    padding:10px 12px;
+  }
+}
+
+@media (max-width: 600px){
+  body{
+    font-size:16px;
+  }
+
+  .section{
+    padding:14px 0;
+  }
+
+  .header-inner img{
+    max-height:40px;
+  }
+
+  .subtitle{
+    font-size:24px;
+  }
+
+  h3{
+    font-size:22px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+  header nav{
+    margin-left:0;
+    padding-right:0;
+  }
+
+  header nav a{
+    padding:10px 0;
+  }
+
+  .hero-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .download-btn,
+  .cta-btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .section ul{
+    padding-left:1.2em;
+  }
 }
 
 .download-btn{
@@ -132,4 +257,16 @@ transition:0.15s;
 .cta-btn:hover{
 transform:translateY(2px);
 box-shadow:0 2px 0 #f57c00;
+}
+
+.section ul {
+  line-height: 1.8;
+  padding-left: 1.5em;
+}
+
+.section ul li.note {
+  list-style: none;
+  margin-left: -1em;
+  padding-left: 2em;
+  text-indent: -1em;
 }
